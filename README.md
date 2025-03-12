@@ -1,3 +1,5 @@
+# liorf based on lio-sam with filtering of infinities and NaNs and docker support
+
 # New Feature
 ------------------- Update Date: 2022-11-20 -------------------
 - This version has removed the feature extraction module, making it easier to adapt to different lidars;
@@ -160,31 +162,32 @@ Video：[基于LIO-SAM框架SLAM算法开发系列视频](https://space.bilibili
 
 ## Menu
 
-  - [**System architecture**](#system-architecture)
-
-  - [**Package dependency**](#dependency)
-
-  - [**Package install**](#install)
-
-  - [**Prepare lidar data**](#prepare-lidar-data) (must read)
-
-  - [**Prepare IMU data**](#prepare-imu-data) (must read)
-
-  - [**Sample datasets**](#sample-datasets)
-
-  - [**Run the package**](#run-the-package)
-
-  - [**Other notes**](#other-notes)
-
-  - [**Issues**](#issues)
-
-  - [**Paper**](#paper)
-
-  - [**TODO**](#todo)
-
-  - [**Related Package**](#related-package)
-
-  - [**Acknowledgement**](#acknowledgement)
+- [liorf based on lio-sam with filtering of infinities and NaNs and docker support](#liorf-based-on-lio-sam-with-filtering-of-infinities-and-nans-and-docker-support)
+- [New Feature](#new-feature)
+  - [Dependency](#dependency)
+  - [Install](#install)
+  - [Run the package](#run-the-package)
+  - [For fusion gps factor](#for-fusion-gps-factor)
+  - [Mapping](#mapping)
+  - [Performance](#performance)
+  - [Acknowledgments](#acknowledgments)
+- [LIO-SAM](#lio-sam)
+  - [Menu](#menu)
+  - [System architecture](#system-architecture)
+  - [Dependency](#dependency-1)
+  - [Install](#install-1)
+  - [Using Docker](#using-docker)
+  - [Prepare lidar data](#prepare-lidar-data)
+  - [Prepare IMU data](#prepare-imu-data)
+  - [Sample datasets](#sample-datasets)
+  - [Run the package](#run-the-package-1)
+  - [Other notes](#other-notes)
+  - [Service](#service)
+  - [Issues](#issues)
+  - [Paper](#paper)
+  - [TODO](#todo)
+  - [Related Package](#related-package)
+  - [Acknowledgement](#acknowledgement)
 
 ## System architecture
 
