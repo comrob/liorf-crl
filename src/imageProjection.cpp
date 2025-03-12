@@ -221,19 +221,28 @@ public:
         {
             // Convert to Velodyne format
             pcl::moveFromROSMsg(currentCloudMsg, *tmpOusterCloudIn);
-            laserCloudIn->points.resize(tmpOusterCloudIn->size());
-            laserCloudIn->is_dense = tmpOusterCloudIn->is_dense;
-            for (size_t i = 0; i < tmpOusterCloudIn->size(); i++)
+            laserCloudIn->points.clear();  // Clear before inserting valid points
+            laserCloudIn->is_dense = true; // Assume dense unless filtered out
+    
+            for (const auto &src : tmpOusterCloudIn->points)
             {
-                auto &src = tmpOusterCloudIn->points[i];
-                auto &dst = laserCloudIn->points[i];
+                // Filter out NaNs and infinities
+                if (!std::isfinite(src.x) || !std::isfinite(src.y) || !std::isfinite(src.z))
+                    continue;
+    
+                PointXYZIRT dst;
                 dst.x = src.x;
                 dst.y = src.y;
                 dst.z = src.z;
                 dst.intensity = src.intensity;
                 dst.ring = src.ring;
                 dst.time = src.t * 1e-9f;
+    
+                laserCloudIn->points.push_back(dst);
             }
+    
+            // Update dense flag after filtering
+            laserCloudIn->is_dense = !laserCloudIn->points.empty();
         } // <!-- liorf_yjz_lucky_boy -->
         else if (sensor == SensorType::MULRAN)
         {
